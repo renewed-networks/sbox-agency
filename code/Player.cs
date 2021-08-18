@@ -21,6 +21,7 @@ namespace Agency
 			EnableShadowInFirstPerson = true;
 
 			base.Respawn();
+			Event.Run("PostPlayerRespawned");
 		}
 
 		public override void Simulate( Client cl )

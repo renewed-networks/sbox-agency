@@ -13,7 +13,7 @@ namespace Agency
 		{
 			if ( IsServer )
 			{
-				new AgencyHud();
+				_ = new AgencyHud();
 			}
 		}
 

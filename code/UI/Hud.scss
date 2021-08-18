@@ -4,8 +4,30 @@ Team {
 	font-weight: 700;
 	color: white;
 	position: absolute;
-	left: 40px;
-	top: 90%;
+	left: 20px;
+	bottom: 50px;
+	text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.30);
+}
+
+Money {
+	font-family: Roboto;
+	font-size: 45px;
+	font-weight: 700;
+	color: rgb(100, 255, 100);
+	position: absolute;
+	left: 165px;
+	bottom: 5px;
+	text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.30);
+}
+
+MoneyPanel {
+	font-family: Roboto;
+	font-size: 45px;
+	font-weight: 700;
+	color: white;
+	position: absolute;
+	left: 20px;
+	bottom: 5px;
 	text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.30);
 }
 
@@ -15,7 +37,7 @@ text.title {
 	font-weight: 900;
 	color: rgba(white, 0.5);
 	position: absolute;
-	left: 40px;
+	right: 20px;
 	bottom: 5px;
 	text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.30);
 }

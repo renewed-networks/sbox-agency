@@ -14,7 +14,7 @@ namespace Agency
 		{
 			if ( IsServer )
 			{
-				_ = new AgencyHud();
+				new AgencyHud();
 			}
 		}
 
@@ -48,7 +48,8 @@ namespace Agency
 
 		[Event("PostClientJoined")]
 
-		public async void PostClientJoined(Client cl) {
+		public void PostClientJoined(Client cl) {
+			cl.Pawn.Tags.Add("isDetective");
 			CheckPlayers();
 		}
 

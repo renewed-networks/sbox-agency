@@ -12,6 +12,8 @@ namespace Agency
 				RootPanel.SetTemplate( "UI/hud.html" );
 
 				RootPanel.AddChild<Team>();
+				RootPanel.AddChild<MoneyPanel>();
+				RootPanel.AddChild<Money>();
 			}
 		}
 	}

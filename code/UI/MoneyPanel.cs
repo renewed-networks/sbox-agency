@@ -2,11 +2,11 @@
 using Sandbox.UI;
 using Sandbox.UI.Construct;
 
-public class Team : Panel
+public class MoneyPanel : Panel
 {
 	public Label Label;
 
-	public Team()
+	public MoneyPanel()
 	{
 		Label = Add.Label("100", "value");
 	}
@@ -15,6 +15,6 @@ public class Team : Panel
 	{
 		var player = Local.Pawn;
 		if (player == null) return;
-		Label.Text = "Civilian";
+		Label.Text = $"Money";
 	}
 }

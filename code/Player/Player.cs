@@ -6,7 +6,11 @@ namespace Agency
 {
 	partial class AgencyPlayer : Player
 	{
-		[Net, Local] public ModelEntity Ragdoll { get; set; }
+		[Net, Predicted, Local] 
+		public ModelEntity Ragdoll { get; set; }
+
+		[Net]
+		public int Money { get; private set; }
 
 		public override void Respawn()
 		{
@@ -20,13 +24,27 @@ namespace Agency
 			EnableDrawing = true;
 			EnableHideInFirstPerson = true;
 			EnableShadowInFirstPerson = true;
+			Ragdoll = null;
 
 			base.Respawn();
 			Event.Run("PostPlayerRespawned");
 		}
 
 		[Event("PostPlayerRespawned")]
-		public void PostPlayerRespawned() { }
+		public async void PostPlayerRespawned() 
+		{
+			await Task.DelaySeconds(1);
+			if (this.Tags.Has("isVIP"))
+			{
+				Money = 700;
+			} else if (this.Tags.Has("isDetective"))
+			{
+				Money = 500;
+			} else
+			{
+				Money = 50;
+			}
+		}
 
 		public override void Simulate( Client cl )
 		{

@@ -17,12 +17,12 @@ namespace Agency
 			}
 		}
 
-		public override void ClientJoined( Client client )
+		public override void ClientJoined( Client cl )
 		{
-			base.ClientJoined( client );
+			base.ClientJoined(cl);
 
 			var player = new AgencyPlayer();
-			client.Pawn = player;
+			cl.Pawn = player;
 
 			player.Respawn();
 		}

@@ -35,5 +35,15 @@ namespace Agency
 
 			EnableDrawing = false;
 		}
+
+		public override void TakeDamage(DamageInfo info)
+		{
+			if (GetHitboxGroup(info.HitboxIndex) == 1)
+			{
+				info.Damage *= 10.0f;
+			}
+
+			base.TakeDamage(info);
+		}
 	}
 }

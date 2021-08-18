@@ -28,5 +28,9 @@ namespace Agency
 			player.Respawn();
 			Event.Run("PostClientJoined", cl);
 		}
+
+		[Event("PreClientJoined")]
+		public async void PreClientJoined(Client cl) { }
+
 	}
 }

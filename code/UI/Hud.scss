@@ -1,13 +1,21 @@
+Team {
+	font-family: Roboto;
+	font-size: 45px;
+	font-weight: 700;
+	color: white;
+	position: absolute;
+	left: 40px;
+	top: 90%;
+	text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.30);
+}
 
-
-text.title
-{
-	font-family: Poppins;
+text.title {
+	font-family: Roboto;
 	font-size: 40px;
 	font-weight: 900;
 	color: rgba(white, 0.5);
 	position: absolute;
-	left: 15px;
+	left: 40px;
 	bottom: 5px;
-	text-shadow: 5px 5px 50px rgba( black, 0.8 );
+	text-shadow: 4px 4px 3px rgba(0, 0, 0, 0.30);
 }

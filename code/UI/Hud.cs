@@ -8,7 +8,10 @@ namespace Agency
 		{
 			if ( IsClient )
 			{
+				RootPanel.StyleSheet.Load("UI/hud.scss");
 				RootPanel.SetTemplate( "UI/hud.html" );
+
+				RootPanel.AddChild<Team>();
 			}
 		}
 	}

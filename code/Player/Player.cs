@@ -6,7 +6,8 @@ namespace Agency
 {
 	partial class AgencyPlayer : Player
 	{
-		[Net] public string Team { get; set; }
+		[Net, Local] public ModelEntity Ragdoll { get; set; }
+
 		public override void Respawn()
 		{
 			SetModel( "models/citizen/citizen.vmdl" );
@@ -24,16 +25,46 @@ namespace Agency
 			Event.Run("PostPlayerRespawned");
 		}
 
+		[Event("PostPlayerRespawned")]
+		public void PostPlayerRespawned() { }
+
 		public override void Simulate( Client cl )
 		{
 			base.Simulate( cl );
-
 			SimulateActiveChild( cl, ActiveChild );
 		}
 
 		public override void OnKilled()
 		{
 			base.OnKilled();
+
+			if (GetModelName() != null)
+			{
+				var ragdoll = new ModelEntity();
+				ragdoll.SetModel(GetModelName());
+				ragdoll.Position = this.Position;
+				ragdoll.SetupPhysicsFromModel(PhysicsMotionType.Dynamic, false);
+
+				ragdoll.CopyBonesFrom(this);
+				ragdoll.SetRagdollVelocityFrom(this);
+
+				foreach (Entity child in this.Children)
+				{
+					if (child is ModelEntity e)
+					{
+						string model = e.GetModelName();
+						if (model == null || !model.Contains("clothes"))
+							continue;
+
+						ModelEntity clothing = new ModelEntity();
+						clothing.SetModel(model);
+						clothing.SetParent(ragdoll, true);
+						clothing.RenderColor = e.RenderColor;
+					}
+				}
+
+				Ragdoll = ragdoll;
+			}
 
 			EnableDrawing = false;
 		}

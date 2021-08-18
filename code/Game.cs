@@ -32,5 +32,6 @@ namespace Agency
 		[Event("PreClientJoined")]
 		public async void PreClientJoined(Client cl) { }
 
+		public override void DoPlayerNoclip(Client cl) { }
 	}
 }

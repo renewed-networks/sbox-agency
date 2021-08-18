@@ -33,5 +33,6 @@ namespace Agency
 		public async void PreClientJoined(Client cl) { }
 
 		public override void DoPlayerNoclip(Client cl) { }
+		public override void DoPlayerSuicide(Client cl) { }
 	}
 }

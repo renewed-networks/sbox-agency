@@ -24,7 +24,9 @@ namespace Agency
 			var player = new AgencyPlayer();
 			cl.Pawn = player;
 
+			Event.Run("PreClientJoined", cl);
 			player.Respawn();
+			Event.Run("PostClientJoined", cl);
 		}
 	}
 }

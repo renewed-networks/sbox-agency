@@ -6,6 +6,7 @@ namespace Agency
 {
 	partial class AgencyPlayer : Player
 	{
+		[Net] public string Team { get; set; }
 		public override void Respawn()
 		{
 			SetModel( "models/citizen/citizen.vmdl" );

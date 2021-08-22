@@ -6,11 +6,22 @@ namespace Agency
 {
 	partial class AgencyPlayer : Player
 	{
-		[Net, Predicted, Local] 
+		[Net, Predicted, Local]
 		public ModelEntity Ragdoll { get; set; }
 
 		[Net]
 		public int Money { get; private set; }
+
+		[Net]
+		public Teams Team { get; private set; }
+
+		public enum Teams
+		{
+			Civilian,
+			VIP,
+			Agent,
+			Spectator
+		}
 
 		public override void Respawn()
 		{
@@ -30,10 +41,18 @@ namespace Agency
 			Event.Run("PostPlayerRespawned");
 		}
 
+		private void SetAsSpectator()
+		{
+			Teams team;
+			team = Teams.Spectator;
+			Team = team;
+		}
+
 		[Event("PostPlayerRespawned")]
 		public async void PostPlayerRespawned() 
 		{
 			await Task.DelaySeconds(1);
+			SetAsSpectator();
 			if (this.Tags.Has("isVIP"))
 			{
 				Money = 700;

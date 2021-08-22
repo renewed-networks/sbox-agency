@@ -13,8 +13,9 @@ public class Team : Panel
 
 	public override void Tick()
 	{
-		var player = Local.Pawn;
+		var player = Local.Pawn as Agency.AgencyPlayer;
 		if (player == null) return;
-		Label.Text = "Civilian";
+		var team = player.Team;
+		Label.Text = team.ToString();
 	}
 }

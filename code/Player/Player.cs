@@ -52,16 +52,21 @@ namespace Agency
 		public async void PostPlayerRespawned() 
 		{
 			await Task.DelaySeconds(1);
+
 			SetAsSpectator();
-			if (this.Tags.Has("isVIP"))
+
+			if (Team is Teams.VIP)
 			{
 				Money = 700;
-			} else if (this.Tags.Has("isDetective"))
+			} else if (Team is Teams.Agent)
 			{
 				Money = 500;
-			} else
+			} else if (Team is Teams.Civilian)
 			{
 				Money = 50;
+			} else
+			{
+				Money = 0;
 			}
 		}
 

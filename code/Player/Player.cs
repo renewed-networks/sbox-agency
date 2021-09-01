@@ -43,8 +43,25 @@ namespace Agency
 
 		private void SetAsSpectator()
 		{
-			Teams team;
-			team = Teams.Spectator;
+			Teams team = Teams.Spectator;
+			Team = team;
+		}
+
+		private void SetAsVIP()
+		{
+			Teams team = Teams.VIP;
+			Team = team;
+		}
+
+		private void SetAsAgent()
+		{
+			Teams team = Teams.Agent;
+			Team = team;
+		}
+
+		private void SetAsCivil()
+		{
+			Teams team = Teams.Civilian;
 			Team = team;
 		}
 
@@ -53,7 +70,7 @@ namespace Agency
 		{
 			await Task.DelaySeconds(1);
 
-			SetAsSpectator();
+			SetAsAgent();
 
 			if (Team is Teams.VIP)
 			{
@@ -74,6 +91,18 @@ namespace Agency
 		{
 			base.Simulate( cl );
 			SimulateActiveChild( cl, ActiveChild );
+
+			if (Input.Pressed(InputButton.View))
+			{
+				if (Camera is not FirstPersonCamera)
+				{
+					Camera = new FirstPersonCamera();
+				}
+				else
+				{
+					Camera = new ThirdPersonCamera();
+				}
+			}
 		}
 
 		public override void OnKilled()

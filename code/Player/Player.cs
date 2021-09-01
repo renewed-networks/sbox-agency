@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Agency
 {
-	partial class AgencyPlayer : Player
+	public partial class AgencyPlayer : Player
 	{
 		[Net, Predicted, Local]
 		public ModelEntity Ragdoll { get; set; }
@@ -13,15 +13,7 @@ namespace Agency
 		public int Money { get; private set; }
 
 		[Net]
-		public Teams Team { get; private set; }
-
-		public enum Teams
-		{
-			Civilian,
-			VIP,
-			Agent,
-			Spectator
-		}
+		public AgencyTeam.Teams Team { get; private set; }
 
 		public override void Respawn()
 		{
@@ -42,50 +34,11 @@ namespace Agency
 			Dress();
 		}
 
-		private void SetAsSpectator()
-		{
-			Teams team = Teams.Spectator;
-			Team = team;
-		}
-
-		private void SetAsVIP()
-		{
-			Teams team = Teams.VIP;
-			Team = team;
-		}
-
-		private void SetAsAgent()
-		{
-			Teams team = Teams.Agent;
-			Team = team;
-		}
-
-		private void SetAsCivil()
-		{
-			Teams team = Teams.Civilian;
-			Team = team;
-		}
-
 		[Event("PostPlayerRespawned")]
 		public async void PostPlayerRespawned() 
 		{
 			await Task.DelaySeconds(1);
-
-			SetAsAgent();
-
-			if (Team is Teams.VIP)
-			{
-				Money = 700;
-			} else if (Team is Teams.Agent)
-			{
-				Money = 500;
-			} else if (Team is Teams.Civilian)
-			{
-				Money = 50;
-			} else
-			{
-				Money = 0;
-			}
+			AgencyTeam.SetAsAgent(this as AgencyPlayer);
 		}
 
 		public override void Simulate( Client cl )

@@ -9,7 +9,6 @@ namespace Agency
 {
 	public partial class Agency : Sandbox.Game
 	{
-		[Net] public bool RoundStarted { get; private set; }
 		public Agency()
 		{
 			if ( IsServer )
@@ -36,7 +35,6 @@ namespace Agency
 
 		public override void PostLevelLoaded()
 		{
-			RoundStarted = false;
 			CheckPlayers();
 		}
 

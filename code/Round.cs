@@ -9,16 +9,16 @@ namespace Agency
 {
 	public class Round
 	{
-		public bool RoundStarted
+		public int SetRoundState
 		{
 			get
 			{
-				return RoundStarted;
+				return SetRoundState;
 			}
 
 			set
 			{
-				RoundStarted = value;
+				SetRoundState = value;
 				Event.Run("OnRoundStateChanged", value);
 			}
 		}

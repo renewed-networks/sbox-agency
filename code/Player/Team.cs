@@ -1,6 +1,4 @@
-﻿using Sandbox;
-
-namespace Agency
+﻿namespace Agency
 {
 	public class AgencyTeam
 	{

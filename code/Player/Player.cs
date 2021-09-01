@@ -39,6 +39,7 @@ namespace Agency
 
 			base.Respawn();
 			Event.Run("PostPlayerRespawned");
+			Dress();
 		}
 
 		private void SetAsSpectator()

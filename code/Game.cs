@@ -51,7 +51,7 @@ namespace Agency
 			CheckPlayers();
 		}
 
-		public override void DoPlayerNoclip(Client cl) { }
+		public override void DoPlayerNoclip(Client cl) => base.DoPlayerNoclip(cl);
 		//public override void DoPlayerSuicide(Client cl) { }
 	}
 }
